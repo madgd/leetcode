@@ -32,3 +32,12 @@ class Solution3(object):
         :rtype: int
         """
         return list(bin(n)).count('1')
+
+#convert to string
+class Solution(object):
+    def hammingWeight(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
+        return "{0:b}".format(n).count('1')
