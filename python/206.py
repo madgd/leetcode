@@ -35,3 +35,19 @@ class Solution2(object):
         head.next = None
         return p
 
+class Solution3(object):
+    def reverseList(self, head):
+        prev = None
+        while head:
+            curr = head
+            head = head.next
+            curr.next = prev
+            prev = curr
+        return prev
+
+class Solution4(object):
+    def reverseList(self, head):
+        next=None
+        while head:
+            head.next,head,next=next,head.next,head
+        return next
