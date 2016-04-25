@@ -8,13 +8,29 @@ class Solution(object):
         plus = 1
         if len(s) == 0:
             return 0
-        t = 1
+        base = 1
         n = 0
         for i in reversed(s):
-            if romanDict[i] < t:
+            if romanDict[i] < base:
                 plus = -1
             else:
                 plus = 1
             n = n + plus * romanDict[i]
-            t = romanDict[i]
+            base = romanDict[i]
         return n
+
+class Solution2(object):
+    def romanToInt(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        #左边小于右边，必定是减去的；最后一位一定是加上的
+        romanDict = {'M': 1000,'D': 500 ,'C': 100,'L': 50,'X': 10,'V': 5,'I': 1}
+        n = 0
+        for i in range(0, len(s) - 1):
+            if romanDict[s[i]] < romanDict[s[i+1]]:
+                n -= romanDict[s[i]]
+            else:
+                n += romanDict[s[i]]
+        return n + romanDict[s[-1]]
