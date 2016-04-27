@@ -4,7 +4,6 @@ class Solution(object):
         :type s: str
         :rtype: int
         """
-
         while s and s[-1] == ' ':
             s = s[:-1]
         leng = len(s)
@@ -12,4 +11,19 @@ class Solution(object):
             return 0            
         n = s.rfind(' ')
 
-        return len(s) - n -1
+        return leng - n -1
+
+class Solution2(object):
+    def lengthOfLastWord(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        leng = len(s)
+        m = 1
+        while m <= leng and s[-m] == ' ':
+            m += 1
+        n = m
+        while n <= leng and s[-n] != ' ':
+            n += 1
+        return n - m

@@ -47,7 +47,7 @@ class Solution3(object):
 
 class Solution4(object):
     def reverseList(self, head):
-        next=None
+        Pre = None
         while head:
-            head.next,head,next=next,head.next,head
-        return next
+            head.next,Pre,head = Pre,head,head.next
+        return Pre
