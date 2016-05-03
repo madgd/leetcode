@@ -19,7 +19,7 @@ class Solution(object):
         Max = prices[i + 1]
         Min = Max
         res = Max - prices[i]
-        
+
         i += 2
         #转移到下一个状态
         while i < leng:
@@ -36,3 +36,22 @@ class Solution(object):
                 Min = prices[i]
             i += 1
         return res
+
+class Solution2(object):
+    def maxProfit(self, prices):
+        """
+        :type prices: List[int]
+        :rtype: int
+        """
+        leng = len(prices)
+        if leng <= 1:
+            return 0
+        Max = Min = prices[0]
+        profit = 0
+        #随时更新最小值，每次比较差值是否大于原来的收益
+        for i in range(1, leng):
+            if prices[i] < Min:
+                Min = prices[i]
+            if prices[i] - Min > profit:
+                profit = prices[i] - Min
+        return profit
